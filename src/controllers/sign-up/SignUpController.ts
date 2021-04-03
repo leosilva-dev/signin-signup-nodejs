@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 
-const signup = (req: Request, res: Response) => {
 
+const signup = async (req: Request, res: Response) => {
     return res.send("I'm here!")
 }
 
