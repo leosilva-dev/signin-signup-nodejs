@@ -3,7 +3,7 @@ import { SignUpController } from '../controllers'
 
 const routes = Router()
 
-routes.get('/sign-up', SignUpController.signup)
+routes.post('/sign-up', SignUpController.signup)
 
 
 export { routes }
