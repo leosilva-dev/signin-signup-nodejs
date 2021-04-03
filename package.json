@@ -6,7 +6,9 @@
   "author": "leosilva-dev",
   "license": "MIT",
   "scripts": {
-    "start" : "ts-node-dev ./src/server.ts"
+    "start": "ts-node-dev ./src/server.ts",
+    "build": "tsc",
+    "start:build": "node ./build/server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
