@@ -3,6 +3,7 @@ import {StatusCodes} from 'http-status-codes'
 import { celebrate, Joi } from 'celebrate'
 
 import { UserProvider } from '../../database/providers'
+import { verifyPassword } from '../../services';
 
 const validateSignIn = celebrate({
     body: Joi.object({
@@ -22,7 +23,7 @@ const signIn = async (req: Request, res: Response) => {
             return res.status(StatusCodes.BAD_REQUEST).send(user)
         }
 
-        if (user.password === password){
+        if (await verifyPassword(password, user.password)){
             return res.status(StatusCodes.OK).json({accessToken: 'jwt-123456789-jwt'})
         }else{
             return res.status(StatusCodes.UNAUTHORIZED).send('Usuário ou senha são inválidos.')
