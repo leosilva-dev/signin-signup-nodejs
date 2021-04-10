@@ -1,9 +1,10 @@
 import { Request, Response } from 'express'
-import { UserProvider } from '../../database/providers'
 import {StatusCodes} from 'http-status-codes'
 
+import { UserProvider } from '../../database/providers'
 
-const signup = async (req: Request, res: Response) => {
+
+const signUp = async (req: Request, res: Response) => {
 
     try {
         const { name, username, password, email } = req.body
@@ -16,11 +17,11 @@ const signup = async (req: Request, res: Response) => {
         return res.status(StatusCodes.CREATED).json(result)
         }
     } catch (error) {
-        return res.status(StatusCodes.BAD_REQUEST).send("Algum erro interno")
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send("Algum erro interno")
     }
     
 }
 
 export const SignUpController = {
-    signup
+    signUp
 }
