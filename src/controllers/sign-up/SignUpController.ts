@@ -1,7 +1,18 @@
 import { Request, Response } from 'express'
 import {StatusCodes} from 'http-status-codes'
+import { celebrate, Joi } from 'celebrate'
+
 
 import { UserProvider } from '../../database/providers'
+
+const validateSignUp = celebrate({
+    body: Joi.object({
+        name: Joi.string().required().min(3).max(200),
+        username: Joi.string().min(3).max(80),
+        email: Joi.string().email().required().max(200),
+        password: Joi.string().min(6).required(),
+    })
+});
 
 
 const signUp = async (req: Request, res: Response) => {
@@ -23,5 +34,6 @@ const signUp = async (req: Request, res: Response) => {
 }
 
 export const SignUpController = {
-    signUp
+    signUp,
+    validateSignUp
 }

@@ -17,7 +17,7 @@ const createUser = async (userToCreate: IUserToCreate) => {
             id: insertedUserId,
             name: userToCreate.name,
             email: userToCreate.email,
-            username: userToCreate.username
+            username: userToCreate.username 
         };
     } catch (error) {
         return "Erro ao inserir usuário"
