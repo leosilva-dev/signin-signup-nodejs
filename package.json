@@ -1,13 +1,13 @@
 {
   "name": "signin-signup-nodejs",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./build/server.js",
   "repository": "https://github.com/leosilva-dev/signin-signup-nodejs.git",
   "author": "leosilva-dev",
   "license": "MIT",
   "scripts": {
     "start": "ts-node-dev ./src/server.ts",
-    "build": "tsc",
+    "build": "npm install --only=dev && tsc",
     "production": "node ./build/server.js",
     "knex:migrate": "knex --knexfile ./src/knexfile.ts migrate:latest",
     "knex:rollback": "knex --knexfile ./src/knexfile.ts migrate:rollback",
