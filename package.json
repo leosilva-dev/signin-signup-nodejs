@@ -8,7 +8,7 @@
   "scripts": {
     "start": "ts-node-dev ./src/server.ts",
     "build": "tsc",
-    "start:build": "node ./build/server.js",
+    "production": "node ./build/server.js",
     "knex:migrate": "knex --knexfile ./src/knexfile.ts migrate:latest",
     "knex:rollback": "knex --knexfile ./src/knexfile.ts migrate:rollback",
     "knex:rollback-all": "knex --knexfile ./src/knexfile.ts migrate:rollback --all"
