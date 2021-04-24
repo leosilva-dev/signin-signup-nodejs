@@ -10,7 +10,7 @@ const validateSignIn = celebrate({
         email: Joi.string().email().required().max(200),
         password: Joi.string().min(6).required(),
     })
-});
+}, {abortEarly: false});
 
 const signIn = async (req: Request, res: Response) => {
 

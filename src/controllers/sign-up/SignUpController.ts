@@ -12,7 +12,7 @@ const validateSignUp = celebrate({
         email: Joi.string().email().required().max(200),
         password: Joi.string().min(6).required(),
     })
-});
+}, {abortEarly: false});
 
 
 const signUp = async (req: Request, res: Response) => {
