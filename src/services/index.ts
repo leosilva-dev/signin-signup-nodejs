@@ -1,1 +1,1 @@
-export * from './PasswordCrypto'
+export * from './PasswordCrypto';

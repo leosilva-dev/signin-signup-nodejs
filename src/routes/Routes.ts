@@ -1,11 +1,12 @@
-import { Router } from 'express'
-import { SignUpController, SignInController } from '../controllers'
+import { Router } from 'express';
 
-const routes = Router()
+import { SignUpController, SignInController } from '../controllers';
+
+
+const routes = Router();
 
 routes.get('/', (_, res) => res.send('Working...'));
-routes.post('/sign-up', SignUpController.validateSignUp, SignUpController.signUp)
-routes.post('/sign-in', SignInController.validateSignIn, SignInController.signIn)
+routes.post('/sign-up', SignUpController.validateSingUp, SignUpController.signUp);
+routes.post('/sign-in', SignInController.validateSingIn, SignInController.signIn);
 
-
-export { routes }
+export { routes };

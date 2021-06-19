@@ -1,13 +1,13 @@
-import path from 'path'
+import path from 'path';
 
 const development = {
     client: 'sqlite3',
     useNullAsDefault: true,
-    connection: path.resolve(__dirname,'..','database.sqlite'),
+    connection: path.resolve(__dirname, '..', 'database.sqlite'),
     migrations: {
-        directory: path.resolve(__dirname,'database','migrations')
+        directory: path.resolve(__dirname, 'database', 'migrations'),
     }
-}
+};
 
 const production = {
     client: 'pg',
@@ -28,5 +28,4 @@ const production = {
     }
 };
 
-export {development, production}
-
+export { development, production }

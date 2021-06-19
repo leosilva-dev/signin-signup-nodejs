@@ -1,8 +1,8 @@
 require('dotenv/config');
 
-import express from "express";
 import { errors } from "celebrate";
-import cors from 'cors'
+import express from "express";
+import cors from "cors";
 
 import { Knex } from "./database/connection";
 import { routes } from "./routes/Routes";

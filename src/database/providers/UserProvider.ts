@@ -1,62 +1,56 @@
 import { hashPassword } from "../../services";
-import { tableNames } from "../tableNames"
-import { Knex } from "../connection"
+import { TableNames } from "../TableNames";
+import { Knex } from "../connection";
 
 interface IUserToCreate {
     name: string;
-    email: string;
-    username?: string;
-    password: string;
+    email: string,
+    password: string,
+    username?: string,
 }
-
 const createUser = async (userToCreate: IUserToCreate) => {
-
     try {
-        userToCreate.password = await hashPassword(userToCreate.password)
+        userToCreate.password = await hashPassword(userToCreate.password);
 
-        const [insertedUserId] = await Knex(tableNames.user).insert(userToCreate);
-        
+        const [insertedUserId] = await Knex(TableNames.user).insert(userToCreate);
+
         return {
             id: insertedUserId,
             name: userToCreate.name,
             email: userToCreate.email,
-            username: userToCreate.username 
+            username: userToCreate.username,
         };
     } catch (error) {
-        return "Erro ao inserir usuário"
+        return "Erro ao inserir o usuário";
     }
-
-   
 }
 
-interface IUserReadResult{
+interface IUserReadResult {
     id: number;
     name: string;
-    email: string;
-    username?: string;
-    password: string;
+    email: string,
+    password: string,
+    username?: string,
 }
-
-const readUserByEmail = async (email: string) : Promise<string | IUserReadResult> => {
+const readUserByEmail = async (email: string): Promise<string | IUserReadResult> => {
     try {
-        const user = await Knex(tableNames.user).select('*').where({ email }).first();
+        const user = await Knex(TableNames.user).select('*').where({ email }).first();
 
-        if(!user) return 'Usuário não existe';
+        if (!user) return 'Usuário não existe';
 
         return {
             id: user.id,
             name: user.name,
             email: user.email,
-            username: user.username,
             password: user.password,
-        }
+            username: user.username,
+        };
     } catch (error) {
-        return 'Erro interno'
-        
+        return 'Erro interno';
     }
 }
 
 export const UserProvider = {
     createUser,
-    readUserByEmail
+    readUserByEmail,
 }

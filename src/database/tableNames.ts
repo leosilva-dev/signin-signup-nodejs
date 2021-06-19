@@ -1,3 +1,3 @@
-export enum tableNames {
-    user='user'
+export enum TableNames {
+    user = 'user'
 }
